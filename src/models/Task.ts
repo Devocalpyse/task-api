@@ -2,7 +2,7 @@ import mongoose, { Document, Schema } from 'mongoose';
 
 interface iTask extends Document {
   title: string;
-  complete: boolean;
+  complete?: boolean;
 }
 
 const taskSchema: Schema = new Schema({

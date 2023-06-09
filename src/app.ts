@@ -5,7 +5,8 @@ import mongoose from 'mongoose';
 import taskRoutes from './routes/taskRoutes';
 
 // Database connection:
-mongoose.connect(process.env.TEST_DB!).then(
+const connection: string = process.env.TEST_DB!;
+mongoose.connect(connection).then(
   () => console.log('Database connection successful!'),
   (err) => console.log('Error connecting to the database', err)
 );
