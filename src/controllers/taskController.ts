@@ -27,9 +27,12 @@ export const updateTask: RequestHandler = async (req, res, next) => {
     complete: req.body.complete,
   });
 
-  let result = await Task.findByIdAndUpdate(id, { $set: updatedTask }, { new: true });
-
-  res.status(200).json(result);
+  try {
+    await Task.findByIdAndUpdate(id, { $set: updatedTask }, { new: true });
+    res.status(200).json(updatedTask);
+  } catch (err) {
+    res.status(404).send("Task not found");
+  }
 };
 
 export const deleteTask: RequestHandler = async (req, res, next) => {
